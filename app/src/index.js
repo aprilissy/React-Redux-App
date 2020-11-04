@@ -1,12 +1,30 @@
+// libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux'
+import {createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
+
+// redux (helpers)
+import {berriesReducer} from './store/reducers'
+
+// stylesheet
+import './index.css';
+
+// components
+import App from './App';
+
+// Pass applyMiddleware into createStore
+// Any middleware frunction can passed into the applyMiddlware function
+const store = createStore(berriesReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
