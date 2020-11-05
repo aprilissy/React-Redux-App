@@ -8,12 +8,27 @@ const BerriesList = (props) => {
   }, [])
   console.log('berries',props.berries);
   
+  const copy = [...props.berries]
+  const alphBerries = (a,b) => {
+    const berryA = a.name.toUpperCase()
+    const berryB = b.name.toUpperCase()
+    let comparison = 0
+    if (berryA > berryB) {
+      comparison = 1
+    } else if (berryA < berryB) {
+      comparison = -1
+    }
+    return comparison 
+  }
+  copy.sort(alphBerries)
+  console.log('copy',copy);
+  
 
   return (
     <div className='berries'>
       {props.isLoading ? <p>Loading Berries Info...</p> : null}
       {props.error ? <p>{props.error}</p> : null}
-      {props.berries.map((berry) => {
+      {copy.map((berry) => {
         return(
         <div>
           <h3 className='berry'>{berry.name}</h3>
