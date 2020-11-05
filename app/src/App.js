@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <h1>PokéBerries</h1>
       </header>
-      <Berries/>
+      <Berries />
     </div>
   );
 }

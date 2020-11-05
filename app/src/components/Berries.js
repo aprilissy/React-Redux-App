@@ -10,13 +10,13 @@ const BerriesList = (props) => {
   
 
   return (
-    <div>
+    <div className='berries'>
       {props.isLoading ? <p>Loading Berries Info...</p> : null}
       {props.error ? <p>{props.error}</p> : null}
       {props.berries.map((berry) => {
         return(
         <div>
-          <h3>{berry.name}</h3>
+          <h3 className='berry'>{berry.name}</h3>
         </div>
         )
       })}
